@@ -23,6 +23,7 @@ N/A
 Click on the "Generate Password" button. This will give you a series of prompts to select what you would like to include in your password. Once you have made your selections, a random password based on your criteria will be generated and presented to you.
 
 Link to the generator:
+https://github.com/gabel35/Get-a-Password.github.io
 
 
 ```md

@@ -1,16 +1,18 @@
 //getting variables from html and creating variables for different options for criteria
 var password = document.querySelector("#password");
 var generateBtn = document.querySelector("#generate");
+var selLength = document.getElementById(selLength);
 
 var upperCase = ['A', 'B', 'C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 var lowerCase = ['a', 'b', 'c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 var numericCase = ['0','1','2','3','4','5','6','7','8','9'];
 var symbolCase = ['!','@','#','$','%','^','&','*','(',')','-','_','+','=','`','~','<','>','?','/','.',',',':',';','[',']'];
 var criteria = [];
+var criteriaExpand = document.getElementById(criteriaExpand)
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var password = generatePassword ();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -21,7 +23,7 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 // Ask User the criteria to include in their password
-function generatePassword () {
+var generatePassword = function () {
   var selLength = parseFloat(prompt("How long do you want your password to be? (required length: 8-128 characters"));
     if (selLength < 8){
       alert("Password needs to be at least 8 characters long");
@@ -68,8 +70,9 @@ function generatePassword () {
     generatePassword ();
     return;
   };
-
-    for (var i = 0; i < [selLength.value]; i++) {
-      criteriaExpand[Math.floor(Math.random()*selLength)];
-    }
+  
+  // var choosenLength = selLength.value;
+  //   for (var i = 0; i < [choosenLength]; i++) {
+  //    var generatePassword = criteriaExpand[Math.floor(Math.random()*criteriaExpand.length)];
+  //   }
 }
