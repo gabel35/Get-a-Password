@@ -8,7 +8,6 @@ var numericCase = ['0','1','2','3','4','5','6','7','8','9'];
 var symbolCase = ['!','@','#','$','%','^','&','*','(',')','-','_','+','=','`','~','<','>','?','/','.',',',':',';','[',']'];
 var criteria = [];
 
-
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -22,16 +21,16 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 // Ask User the criteria to include in their password
-var generatePassword = function passwordCriteria () {
-  var selLength = prompt("How long do you want your password to be? (required length: 8-128 characters");
+function generatePassword () {
+  var selLength = parseFloat(prompt("How long do you want your password to be? (required length: 8-128 characters"));
     if (selLength < 8){
       alert("Password needs to be at least 8 characters long");
-      passwordCriteria ();
+      generatePassword ();
       return;
     }
-    else if (selLength > 128){
+    else if(selLength > 128){
       alert("Password cannot be longer than 128 characters");
-      passwordCriteria ();
+      generatePassword ();
       return;
     };
     console.log(selLength);
@@ -52,10 +51,7 @@ var generatePassword = function passwordCriteria () {
       criteria.push(symbolCase)
     };
 
-  console.log(criteria)
-  var criteriaExpand = [].concat.apply([], criteria);
-  console.log(criteriaExpand)
-
+  console.log(criteria);
 
   // Validate that at least one criterion will be included in the password
   var countCriteria = selUpper + selLower + selNumeric + selSymbol;
@@ -63,59 +59,17 @@ var generatePassword = function passwordCriteria () {
   console.log('countCriteria: ', countCriteria);
   console.log('typesCriteria: ', typesCriteria);
     
+    var criteriaExpand = [].concat.apply([], criteria);
+    console.log(criteriaExpand);
+
+
   if(countCriteria === 0){
     alert("Please select at least 1 criterion to include in your password");
-    passwordCriteria ();
+    generatePassword ();
     return;
-  }
+  };
 
-  var randomizeCriteria = criteria[Math.floor(Math.random()*selLength)];
-  console.log(randomizeCriteria);
+    for (var i = 0; i < [selLength.value]; i++) {
+      criteriaExpand[Math.floor(Math.random()*selLength)];
+    }
 }
-
-    // for(let i = 0; i < length; i += countCriteria){
-    //   typesCriteria.forEach(type => {
-    //     var criteriaSeriesName = Object.keys(type)[0];
-    //     console.log('criteria: ', criteriaSeriesName);
-
-    //     generatePassword += randomCriteriaSeries[criteriaSeriesName]();
-      // });
-    // }
-
-// function getRandomUpper() {
-//     return String.upperCase(Math.floor(Math.random() * 26) +1);
-// }
-// function getRandomLower() {
-//   return String.lowerCase(Math.floor(Math.random() * 26) +1);
-// }
-// function getRandomNumeric() {
-//   return String.numericCase(Math.floor(Math.random() * 26) +1);
-// }
-// function getRandomSymbol() {
-//   return String.symbolCase(Math.floor(Math.random() * 26) +1);
-// }
-
-// console.log(randomUpper);
-
-// console.log(lowerCase);
-// console.log(upperCase);
-// console.log(numericCase);
-// console.log(symbolCase);
-
-
-// WHEN I click the button to generate a password
-// X   THEN I am presented with a series of prompts for password criteria
-// X   WHEN prompted for password criteria
-// X   THEN I select which criteria to include in the password
-// X   WHEN prompted for the length of the password
-// X   THEN I choose a length of at least 8 characters and no more than 128 characters
-// X   WHEN prompted for character types to include in the password
-// X   THEN I choose lowercase, uppercase, numeric, and/or special characters
-// X   WHEN I answer each prompt
-// X   THEN my input should be validated and at least one character type should be selected
-// WHEN all prompts are answered
-// THEN a password is generated that matches the selected criteria
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
-
-// passwordDisplayElement.textContent = passwordDisplay
