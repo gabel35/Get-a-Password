@@ -8,6 +8,7 @@ var numericCase = ['0','1','2','3','4','5','6','7','8','9'];
 var symbolCase = ['!','@','#','$','%','^','&','*','(',')','-','_','+','=','`','~','<','>','?','/','.',',',':',';','[',']'];
 var criteria = [];
 
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -33,6 +34,7 @@ var generatePassword = function passwordCriteria () {
       passwordCriteria ();
       return;
     };
+    console.log(selLength);
   var selUpper = confirm("Do you want uppercase characters in your password? (recommended)");
     if (selUpper === true){
       criteria.push(upperCase)
@@ -51,6 +53,9 @@ var generatePassword = function passwordCriteria () {
     };
 
   console.log(criteria)
+  var criteriaExpand = [].concat.apply([], criteria);
+  console.log(criteriaExpand)
+
 
   // Validate that at least one criterion will be included in the password
   var countCriteria = selUpper + selLower + selNumeric + selSymbol;
@@ -63,6 +68,9 @@ var generatePassword = function passwordCriteria () {
     passwordCriteria ();
     return;
   }
+
+  var randomizeCriteria = criteria[Math.floor(Math.random()*selLength)];
+  console.log(randomizeCriteria);
 }
 
     // for(let i = 0; i < length; i += countCriteria){
